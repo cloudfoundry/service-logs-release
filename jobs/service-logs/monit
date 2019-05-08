@@ -1,0 +1,5 @@
+check process service-logs
+    with pidfile /var/vcap/sys/run/bpm/service-logs/service-logs.pid
+    start program "/var/vcap/jobs/bpm/bin/bpm start service-logs"
+    stop program "/var/vcap/jobs/bpm/bin/bpm stop service-logs"
+    group vcap

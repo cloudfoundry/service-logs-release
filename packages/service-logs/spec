@@ -1,0 +1,7 @@
+---
+name: service-logs
+
+dependencies: []
+
+files:
+- github.com/cloudfoundry/fluentbit-loggr-plugin/bin/*

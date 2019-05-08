@@ -1,0 +1,3 @@
+set -e
+
+cp -r github.com/cloudfoundry/fluentbit-loggr-plugin/bin/ ${BOSH_INSTALL_TARGET}
