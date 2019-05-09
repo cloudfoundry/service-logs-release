@@ -1,0 +1,17 @@
+- type: replace
+  path: /releases/-
+  value:
+    name: service-logs
+    version: latest
+
+- type: replace
+  path: /instance_groups/name=api/jobs/-
+  value:
+    name: service-logs
+    release: service-logs
+    properties:
+      ca_cert: ((loggregator_ca.certificate))
+      cert: ((loggregator_tls_agent.certificate))
+      key: ((loggregator_tls_agent.private_key))
+      path: /var/vcap/sys/logs/cloud_controller_ng/cloud_controller_ng*.log
+      source_id: api-service-logs
