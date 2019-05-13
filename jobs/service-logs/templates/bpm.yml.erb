@@ -4,7 +4,8 @@ processes:
   args:
   - --config=/var/vcap/jobs/service-logs/config/fluentbit.conf
   - --plugin=/var/vcap/packages/service-logs/bin/out_loggregator.so
-  unsafe:
-    unrestricted_volumes:
-    - path: /var/vcap/sys/log
-      mount_only: true
+  additional_volumes:
+  - path: /var/vcap/sys/log
+    mount_only: true
+  - path: /var/vcap/data/sys/log
+    mount_only: true
