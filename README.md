@@ -5,7 +5,7 @@ job can be added to a service VM and configured to forward that service's logs t
 
 ## How it works
 Service Logs Release uses the [Fluent Bit Loggregator Plugin][fluent-bit-loggr-plugin] to read from syslog 
-files and send those logs to Loggregator. The Fluent Bit Loggregator Plugin is a plugin for [Fluent Bit][fluent-bit]
+files and send those logs to Loggregator. The Fluent Bit Loggregator Plugin is a plugin for [Fluent Bit][fluent-bit].
 
 ## Configuration
 The sample ops file (`manifests/operations/add-service-logs.yml`) adds the service logs job to the `api` VM
