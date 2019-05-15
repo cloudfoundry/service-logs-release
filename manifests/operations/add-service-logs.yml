@@ -10,8 +10,8 @@
     name: service-logs
     release: service-logs
     properties:
+      source_id: api-service-logs
+      path: /var/vcap/sys/log/cloud_controller_ng/cloud_controller_ng*.log
       ca: ((loggregator_ca.certificate))
       cert: ((loggregator_tls_agent.certificate))
       key: ((loggregator_tls_agent.private_key))
-      path: /var/vcap/sys/log/cloud_controller_ng/cloud_controller_ng*.log
-      source_id: api-service-logs
