@@ -1,3 +1,0 @@
-[submodule "src/code.cloudfoundry.org/fluentbit-loggr-plugin"]
-	path = src/code.cloudfoundry.org/fluentbit-loggr-plugin
-	url = https://github.com/cloudfoundry/fluentbit-loggr-plugin

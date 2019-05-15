@@ -1,0 +1,5 @@
+---
+name: fluent-bit
+
+files:
+- fluent-bit/fluent-bit-1.0.6

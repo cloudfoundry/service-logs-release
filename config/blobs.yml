@@ -1,1 +1,8 @@
---- {}
+fluent-bit/fluent-bit-1.0.6:
+  size: 16573368
+  object_id: 8d0b8cc2-22e4-4acc-701c-7a40eb8770bd
+  sha: 0a349469d40f6e3db8a0c17ada9c8ed627d14f6d
+golang/go1.12.4.linux-amd64.tar.gz:
+  size: 127928770
+  object_id: 59ca94c3-ef1f-4a2c-78dd-ab80fdbd4e3c
+  sha: 8d9a4c21109f6e0c5ee19cc8e74ad12473b36b0e

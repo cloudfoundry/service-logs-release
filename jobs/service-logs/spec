@@ -9,7 +9,8 @@ templates:
   loggregator_agent.key.erb: config/certs/loggregator_agent.key
 
 packages:
-- service-logs
+- loggregator-output-plugin
+- fluent-bit
 
 properties:
   source_id:

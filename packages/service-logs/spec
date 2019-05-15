@@ -1,5 +1,0 @@
----
-name: service-logs
-
-files:
-- code.cloudfoundry.org/fluentbit-loggr-plugin/bin/*

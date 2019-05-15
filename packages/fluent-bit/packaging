@@ -1,0 +1,7 @@
+set -e
+
+cp -R fluent-bit/fluent-bit-1.0.6 ${BOSH_INSTALL_TARGET}/fluent-bit
+
+chgrp vcap ${BOSH_INSTALL_TARGET}/fluent-bit
+chown vcap ${BOSH_INSTALL_TARGET}/fluent-bit
+chmod +x ${BOSH_INSTALL_TARGET}/fluent-bit

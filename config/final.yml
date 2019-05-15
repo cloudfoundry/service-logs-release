@@ -1,1 +1,7 @@
+---
 name: service-logs
+blobstore:
+  provider: s3
+  options:
+    region: us-west-2
+    bucket_name: service-logs-release-blobs

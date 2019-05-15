@@ -1,9 +1,9 @@
 processes:
 - name: service-logs
-  executable: /var/vcap/packages/service-logs/bin/fluent-bit
+  executable: /var/vcap/packages/fluent-bit/fluent-bit
   args:
   - --config=/var/vcap/jobs/service-logs/config/fluentbit.conf
-  - --plugin=/var/vcap/packages/service-logs/bin/out_loggregator.so
+  - --plugin=/var/vcap/packages/loggregator-output-plugin/out_loggregator.so
   additional_volumes:
   - path: /var/vcap/sys/log
     mount_only: true
