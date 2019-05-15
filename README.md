@@ -28,9 +28,5 @@ The sample ops file (`manifests/operations/add-service-logs.yml`) demonstrates a
 1. `cd service-logs-release`
 1. `./scripts/bosh-build.sh`
 
-<<<<<<< HEAD
 [fluent-bit-loggr-plugin]: https://github.com/cloudfoundry/fluentbit-loggr-plugin
-=======
-[fluent-bit-loggr-plugin]: https://github.com/cloudfoundry/fluentbit-loggr-plugin/tree/a6dbe6032bd4d24c026ac244a9993c4328869575
->>>>>>> update documentation
 [fluent-bit]: https://fluentbit.io/
