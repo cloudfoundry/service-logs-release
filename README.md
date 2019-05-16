@@ -8,14 +8,25 @@ Service Logs Release uses the [Fluent Bit Loggregator Plugin][fluent-bit-loggr-p
 files and send those logs to Loggregator. The Fluent Bit Loggregator Plugin is a plugin for [Fluent Bit][fluent-bit].
 
 ## Configuration
-The sample ops file (`manifests/operations/add-service-logs.yml`) adds the service logs job to the `api` VM
-and can be changed to add the service logs job to any VM.
+
+ Service Logs release requires the following configuration properties:
+   
+   | property name | description                                                          |
+   | ------------- | -------------------------------------------------------------------- |
+   | source_id     | Source id of the logs to be emitted                                  |
+   | path          | File glob representing the logs to be emitted                        |
+   | cert          | Cert for cert-key pair that can connect to a local loggregator agent |
+   | key           | Key for cert-key pair that can connect to a local loggregator agent  |
+   | ca            | CA for cert-key pair that can connect to a local loggregator agent   |
+   | port          | Port where the loggregator agent is listening                        |
+
+
+The sample ops file (`manifests/operations/add-service-logs.yml`) demonstrates a sample configuration that adds the service logs job to the `api`.
 
 ### Building the release
 1. `git clone https://github.com/cloudfoundry/service-logs-release`
 1. `cd service-logs-release`
 1. `git submodule update --init`
-1. `./src/code.cloudfoundry.org/fluentbit-loggr-plugin/generate_binaries.sh`
 1. `bosh create-release`
 
 [fluent-bit-loggr-plugin]: https://github.com/cloudfoundry/fluentbit-loggr-plugin/tree/a6dbe6032bd4d24c026ac244a9993c4328869575
