@@ -1,0 +1,5 @@
+check process test-logger
+    with pidfile /var/vcap/sys/run/bpm/test-logger/test-logger.pid
+    start program "/var/vcap/jobs/bpm/bin/bpm start test-logger"
+    stop program "/var/vcap/jobs/bpm/bin/bpm stop test-logger"
+    group vcap

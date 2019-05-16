@@ -1,0 +1,10 @@
+---
+name: test-logger
+
+templates:
+  bpm.yml.erb: config/bpm.yml
+  test-logger.sh.erb: bin/test-logger.sh
+
+properties:
+  delay:
+    description: "Delay in seconds between logs emitted"

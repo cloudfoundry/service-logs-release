@@ -1,0 +1,72 @@
+---
+name: test-service-logs
+
+releases:
+- name: service-logs
+  version: latest
+- name: loggregator-agent
+  url: https://bosh.io/d/github.com/cloudfoundry/loggregator-agent-release
+  version: latest
+- name: "bpm"
+  version: latest
+  url: https://bosh.io/d/github.com/cloudfoundry-incubator/bpm-release
+
+stemcells:
+- alias: xenial
+  os: ubuntu-xenial
+  version: latest
+
+instance_groups:
+- name: service-logs-test
+  instances: 1
+  vm_type: minimal
+  stemcell: xenial
+  networks: [{name: default}]
+  azs: [z1]
+  jobs:
+  - name: bpm
+    release: bpm
+  - name: test-logger
+    release: service-logs
+    properties:
+      delay: 1
+  - name: service-logs
+    release: service-logs
+    properties:
+      source_id: service-logs-test
+      path: /var/vcap/sys/log/test-logger/test-logger*.log
+      ca: ((loggregator_tls_agent.ca))
+      cert: ((loggregator_tls_agent.certificate))
+      key: ((loggregator_tls_agent.private_key))
+  - name: loggregator_agent
+    release: loggregator-agent
+    consumes:
+      doppler: {from: doppler, deployment: cf}
+    properties:
+      disable_udp: true
+      loggregator:
+        tls:
+          agent:
+            cert: ((loggregator_tls_agent.certificate))
+            key: ((loggregator_tls_agent.private_key))
+          ca_cert: ((loggregator_tls_agent.ca))
+variables:
+- name: loggregator_tls_agent
+  type: certificate
+  options:
+    ca: loggregator_ca
+    common_name: agent
+    alternative_names:
+    - metron
+    - agent
+    - localhost
+    - 127.0.0.1
+    extended_key_usage:
+    - client_auth
+    - server_auth
+
+update:
+  canaries: 1
+  max_in_flight: 1
+  canary_watch_time: 1000-60000
+  update_watch_time: 1000-60000
