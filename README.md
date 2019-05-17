@@ -26,8 +26,7 @@ The sample ops file (`manifests/operations/add-service-logs.yml`) demonstrates a
 ### Building the release
 1. `git clone https://github.com/cloudfoundry/service-logs-release`
 1. `cd service-logs-release`
-1. `git submodule update --init`
-1. `bosh create-release`
+1. `./scripts/bosh-build.sh`
 
 <<<<<<< HEAD
 [fluent-bit-loggr-plugin]: https://github.com/cloudfoundry/fluentbit-loggr-plugin

@@ -4,7 +4,13 @@ import (
 	"code.cloudfoundry.org/go-loggregator"
 	"code.cloudfoundry.org/go-loggregator/rpc/loggregator_v2"
 	"github.com/fluent/fluent-bit-go/output"
+	"github.com/prometheus/client_golang/prometheus"
+	"github.com/prometheus/client_golang/prometheus/promauto"
+	"github.com/prometheus/client_golang/prometheus/promhttp"
+
+	"fmt"
 	"log"
+	"net/http"
 	"time"
 )
 import (
@@ -15,6 +21,21 @@ import (
 var (
 	client   *loggregator.IngressClient
 	sourceId string
+
+	ingress = promauto.NewCounter(prometheus.CounterOpts{
+		Name: "service_logs_ingress",
+		Help: "The total number of ingressed logs",
+	})
+
+	egress = promauto.NewCounter(prometheus.CounterOpts{
+		Name: "service_logs_egress",
+		Help: "The total number of egressed logs",
+	})
+
+	dropped = promauto.NewCounter(prometheus.CounterOpts{
+		Name: "service_logs_dropped",
+		Help: "The total number of dropped logs",
+	})
 )
 
 //export FLBPluginRegister
@@ -32,6 +53,7 @@ func FLBPluginInit(ctx unsafe.Pointer) int {
 	ca := output.FLBPluginConfigKey(ctx, "ca")
 	addr := output.FLBPluginConfigKey(ctx, "addr")
 	sourceId = output.FLBPluginConfigKey(ctx, "source_id")
+	port := output.FLBPluginConfigKey(ctx, "metrics_port")
 
 	tlsConfig, err := loggregator.NewIngressTLSConfig(
 		ca,
@@ -49,6 +71,13 @@ func FLBPluginInit(ctx unsafe.Pointer) int {
 	)
 	if err != nil {
 		log.Fatalf("Failed to create loggregator agent client: %s", err)
+		return output.FLB_ERROR
+	}
+
+	http.Handle("/metrics", promhttp.Handler())
+	err = http.ListenAndServe(fmt.Sprintf(":%s", port), nil)
+	if err != nil {
+		log.Fatalf("Failed to start metrics server: %s", err)
 		return output.FLB_ERROR
 	}
 
@@ -70,6 +99,7 @@ func FLBPluginFlush(data unsafe.Pointer, length C.int, tag *C.char) int {
 		if ret != 0 {
 			break
 		}
+		ingress.Add(float64(len(record)))
 
 		// Print record keys and values
 		var timestamp time.Time
@@ -96,6 +126,8 @@ func FLBPluginFlush(data unsafe.Pointer, length C.int, tag *C.char) int {
 				},
 			}
 			client.Emit(e)
+
+			egress.Inc()
 		}
 	}
 
