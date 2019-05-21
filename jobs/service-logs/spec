@@ -4,6 +4,7 @@ name: service-logs
 templates:
   bpm.yml.erb: config/bpm.yml
   fluentbit.conf.erb: config/fluentbit.conf
+  metric_port.yml.erb: config/metric_port.yml
   loggregator_ca.crt.erb: config/certs/loggregator_ca.crt
   loggregator_agent.crt.erb: config/certs/loggregator_agent.crt
   loggregator_agent.key.erb: config/certs/loggregator_agent.key
@@ -31,6 +32,6 @@ properties:
   port:
     description: "Port to Loggregator Agent"
     default: 3458
-  metrics_port:
+  debug_port:
     description: "Port to expose service-logs metrics"
     default: 3461

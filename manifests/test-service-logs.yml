@@ -50,6 +50,11 @@ instance_groups:
             cert: ((loggregator_tls_agent.certificate))
             key: ((loggregator_tls_agent.private_key))
           ca_cert: ((loggregator_tls_agent.ca))
+  - name: prom_scraper
+    release: loggregator-agent
+    consumes:
+      loggregator: {from: loggregator, deployment: cf}
+
 variables:
 - name: loggregator_tls_agent
   type: certificate

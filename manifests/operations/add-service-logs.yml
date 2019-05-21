@@ -15,3 +15,11 @@
       ca: ((loggregator_ca.certificate))
       cert: ((loggregator_tls_agent.certificate))
       key: ((loggregator_tls_agent.private_key))
+
+- type: replace
+  path: /instance_groups/name=api/jobs/name=prom_scraper?
+  value:
+    name: prom_scraper
+    release: loggregator-agent
+    consumes:
+      loggregator: {from: loggregator, deployment: cf}

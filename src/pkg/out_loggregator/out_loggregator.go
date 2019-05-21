@@ -31,11 +31,6 @@ var (
 		Name: "service_logs_egress",
 		Help: "The total number of egressed logs",
 	})
-
-	dropped = promauto.NewCounter(prometheus.CounterOpts{
-		Name: "service_logs_dropped",
-		Help: "The total number of dropped logs",
-	})
 )
 
 //export FLBPluginRegister
@@ -75,11 +70,12 @@ func FLBPluginInit(ctx unsafe.Pointer) int {
 	}
 
 	http.Handle("/metrics", promhttp.Handler())
-	err = http.ListenAndServe(fmt.Sprintf(":%s", port), nil)
-	if err != nil {
-		log.Fatalf("Failed to start metrics server: %s", err)
-		return output.FLB_ERROR
-	}
+	go func() {
+		err = http.ListenAndServe(fmt.Sprintf(":%s", port), nil)
+		if err != nil {
+			log.Fatalf("Failed to start metrics server: %s", err)
+		}
+	}()
 
 	return output.FLB_OK
 }
