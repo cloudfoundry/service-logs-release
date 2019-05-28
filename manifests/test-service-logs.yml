@@ -52,8 +52,13 @@ instance_groups:
           ca_cert: ((loggregator_tls_agent.ca))
   - name: prom_scraper
     release: loggregator-agent
-    consumes:
-      loggregator: {from: loggregator, deployment: cf}
+    properties:
+      loggregator_agent:
+        grpc_port: 3458
+        tls:
+          cert: ((loggregator_agent_client.certificate))
+          key: ((loggregator_agent_client.private_key))
+          ca_cert: ((loggregator_tls_agent.ca))
 
 variables:
 - name: loggregator_tls_agent
@@ -66,6 +71,14 @@ variables:
     - agent
     - localhost
     - 127.0.0.1
+    extended_key_usage:
+    - client_auth
+    - server_auth
+- name: loggregator_agent_client
+  type: certificate
+  options:
+    ca: loggregator_ca
+    common_name: prom_scraper
     extended_key_usage:
     - client_auth
     - server_auth
