@@ -6,3 +6,6 @@ dependencies:
 
 files:
 - pkg/**/*.go
+- vendor/**/*
+- go.mod
+- go.sum
