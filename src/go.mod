@@ -42,5 +42,5 @@ require (
 	google.golang.org/genproto v0.0.0-20190522204451-c2c4e71fbf69 // indirect
 	google.golang.org/grpc v1.21.0 // indirect
 	gopkg.in/yaml.v2 v2.2.2 // indirect
-	honnef.co/go/tools v0.0.0-20190530105301-1da3061645b4 // indirect
+	honnef.co/go/tools v0.0.0-20190530170028-a1efa522b896 // indirect
 )
