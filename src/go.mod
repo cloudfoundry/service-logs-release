@@ -6,6 +6,7 @@ require (
 	code.cloudfoundry.org/go-diodes v0.0.0-20180905200951-72629b5276e3 // indirect
 	code.cloudfoundry.org/go-loggregator v7.4.0+incompatible
 	code.cloudfoundry.org/rfc5424 v0.0.0-20180905210152-236a6d29298a // indirect
+	github.com/beorn7/perks v1.0.1 // indirect
 	github.com/fluent/fluent-bit-go v0.0.0-20190614024040-c017a8579953
 	github.com/gogo/protobuf v1.2.1 // indirect
 	github.com/kr/pretty v0.1.0 // indirect
@@ -16,7 +17,7 @@ require (
 	github.com/prometheus/procfs v0.0.3 // indirect
 	github.com/ugorji/go v1.1.7 // indirect
 	golang.org/x/net v0.0.0-20190724013045-ca1201d0de80 // indirect
-	golang.org/x/sys v0.0.0-20190726091711-fc99dfbffb4e // indirect
+	golang.org/x/sys v0.0.0-20190730183949-1393eb018365 // indirect
 	golang.org/x/text v0.3.2 // indirect
 	google.golang.org/appengine v1.4.0 // indirect
 	google.golang.org/genproto v0.0.0-20190716160619-c506a9f90610 // indirect
