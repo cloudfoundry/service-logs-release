@@ -114,7 +114,7 @@ func FLBPluginFlush(data unsafe.Pointer, length C.int, tag *C.char) int {
 			message := v.([]byte)
 			e := &loggregator_v2.Envelope{
 				SourceId:  sourceId,
-				Timestamp: timestamp.Unix(),
+				Timestamp: timestamp.UnixNano(),
 				Message: &loggregator_v2.Envelope_Log{
 					Log: &loggregator_v2.Log{
 						Payload: message,
