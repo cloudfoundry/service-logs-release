@@ -51,9 +51,10 @@ instance_groups:
             key: ((loggregator_tls_agent.private_key))
           ca_cert: ((loggregator_tls_agent.ca))
       metrics:
-        ca: ((loggregator_tls_agent.ca))
+        ca_cert: ((loggregator_tls_agent.ca))
         cert: ((loggregator_tls_agent.certificate))
         key: ((loggregator_tls_agent.private_key))
+        server_name: loggregator-agent-metrics
   - name: prom_scraper
     release: loggregator-agent
     properties:
