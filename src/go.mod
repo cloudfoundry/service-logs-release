@@ -7,7 +7,7 @@ require (
 	code.cloudfoundry.org/go-loggregator v7.4.0+incompatible
 	code.cloudfoundry.org/rfc5424 v0.0.0-20180905210152-236a6d29298a // indirect
 	github.com/fluent/fluent-bit-go v0.0.0-20190614024040-c017a8579953
-	github.com/gogo/protobuf v1.2.1 // indirect
+	github.com/gogo/protobuf v1.3.0 // indirect
 	github.com/google/go-cmp v0.3.1 // indirect
 	github.com/kr/pretty v0.1.0 // indirect
 	github.com/modern-go/concurrent v0.0.0-20180306012644-bacd9c7ef1dd // indirect
