@@ -32,6 +32,6 @@ properties:
   port:
     description: "Port to Loggregator Agent"
     default: 3458
-  debug_port:
+  metrics.port:
     description: "Port to expose service-logs metrics"
     default: 3461
