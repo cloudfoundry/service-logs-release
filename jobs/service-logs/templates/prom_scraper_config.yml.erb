@@ -1,0 +1,7 @@
+---
+port: <%= p("metrics.port") %>
+source_id: "service_logs"
+instance_id: <%= spec.id || spec.index.to_s %>
+scheme: http
+labels:
+  instance_group: <%= spec.job %>

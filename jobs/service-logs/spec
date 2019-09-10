@@ -4,7 +4,7 @@ name: service-logs
 templates:
   bpm.yml.erb: config/bpm.yml
   fluentbit.conf.erb: config/fluentbit.conf
-  metric_port.yml.erb: config/metric_port.yml
+  prom_scraper_config.yml.erb: config/prom_scraper_config.yml
   loggregator_ca.crt.erb: config/certs/loggregator_ca.crt
   loggregator_agent.crt.erb: config/certs/loggregator_agent.crt
   loggregator_agent.key.erb: config/certs/loggregator_agent.key
