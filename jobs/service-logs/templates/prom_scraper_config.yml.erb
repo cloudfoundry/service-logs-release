@@ -2,6 +2,7 @@
 port: <%= p("metrics.port") %>
 source_id: "service_logs"
 instance_id: <%= spec.id || spec.index.to_s %>
-scheme: http
+scheme: https
+server_name: <%= p('metrics.server_name') %>
 labels:
   instance_group: <%= spec.job %>

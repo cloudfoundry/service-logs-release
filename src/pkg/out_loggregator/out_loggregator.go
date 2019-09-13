@@ -2,15 +2,13 @@ package main
 
 import (
 	"code.cloudfoundry.org/go-loggregator"
+	"code.cloudfoundry.org/go-loggregator/metrics"
 	"code.cloudfoundry.org/go-loggregator/rpc/loggregator_v2"
 	"github.com/fluent/fluent-bit-go/output"
-	"github.com/prometheus/client_golang/prometheus"
-	"github.com/prometheus/client_golang/prometheus/promauto"
-	"github.com/prometheus/client_golang/prometheus/promhttp"
+	"os"
+	"strconv"
 
-	"fmt"
 	"log"
-	"net/http"
 	"time"
 )
 import (
@@ -21,16 +19,8 @@ import (
 var (
 	client   *loggregator.IngressClient
 	sourceId string
-
-	ingress = promauto.NewCounter(prometheus.CounterOpts{
-		Name: "service_logs_ingress",
-		Help: "The total number of ingressed logs",
-	})
-
-	egress = promauto.NewCounter(prometheus.CounterOpts{
-		Name: "service_logs_egress",
-		Help: "The total number of egressed logs",
-	})
+	ingress  metrics.Counter
+	egress   metrics.Counter
 )
 
 //export FLBPluginRegister
@@ -48,7 +38,11 @@ func FLBPluginInit(ctx unsafe.Pointer) int {
 	ca := output.FLBPluginConfigKey(ctx, "ca")
 	addr := output.FLBPluginConfigKey(ctx, "addr")
 	sourceId = output.FLBPluginConfigKey(ctx, "source_id")
-	port := output.FLBPluginConfigKey(ctx, "metrics_port")
+
+	metricsPortConfig := output.FLBPluginConfigKey(ctx, "metrics_port")
+	metricsCAFile := output.FLBPluginConfigKey(ctx, "metrics_ca")
+	metricsCertFile := output.FLBPluginConfigKey(ctx, "metrics_cert")
+	metricsKeyFile := output.FLBPluginConfigKey(ctx, "metrics_key")
 
 	tlsConfig, err := loggregator.NewIngressTLSConfig(
 		ca,
@@ -69,13 +63,24 @@ func FLBPluginInit(ctx unsafe.Pointer) int {
 		return output.FLB_ERROR
 	}
 
-	http.Handle("/metrics", promhttp.Handler())
-	go func() {
-		err = http.ListenAndServe(fmt.Sprintf(":%s", port), nil)
-		if err != nil {
-			log.Fatalf("Failed to start metrics server: %s", err)
-		}
-	}()
+	loggr := log.New(os.Stderr, "", log.LstdFlags)
+	metricsPort, err := strconv.Atoi(metricsPortConfig)
+	if err != nil {
+		log.Fatalf("Failed to convert metrics port to int: %s", err)
+		return output.FLB_ERROR
+	}
+
+	m := metrics.NewRegistry(
+		loggr,
+		metrics.WithTLSServer(
+			metricsPort,
+			metricsCertFile,
+			metricsKeyFile,
+			metricsCAFile,
+		),
+	)
+	ingress = m.NewCounter("service_logs_ingress", metrics.WithHelpText("The total number of ingressed logs."))
+	egress = m.NewCounter("service_logs_egress", metrics.WithHelpText("The total number of egressed logs."))
 
 	return output.FLB_OK
 }
@@ -123,7 +128,7 @@ func FLBPluginFlush(data unsafe.Pointer, length C.int, tag *C.char) int {
 			}
 			client.Emit(e)
 
-			egress.Inc()
+			egress.Add(1)
 		}
 	}
 

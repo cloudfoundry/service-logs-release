@@ -15,6 +15,11 @@
       ca: ((loggregator_ca.certificate))
       cert: ((loggregator_tls_agent.certificate))
       key: ((loggregator_tls_agent.private_key))
+      metrics:
+        ca_cert: ((service_logs_metrics_tls.ca))
+        cert: ((service_logs_metrics_tls.certificate))
+        key: ((service_logs_metrics_tls.private_key))
+        server_name: prom_scraper_metrics
 
 - type: replace
   path: /instance_groups/name=api/jobs/name=prom_scraper?
@@ -29,3 +34,51 @@
         cert: ((prom_scraper_metrics_tls.certificate))
         key: ((prom_scraper_metrics_tls.private_key))
         server_name: prom_scraper_metrics
+      scrape:
+        tls:
+          ca_cert: ((prom_scraper_scrape_tls.ca))
+          cert: ((prom_scraper_scrape_tls.certificate))
+          key: ((prom_scraper_scrape_tls.private_key))
+          cn: prom_scraper
+
+- type: replace
+  path: /variables/name=metric_scraper_ca?
+  value:
+    name: metric_scraper_ca
+    type: certificate
+    options:
+      is_ca: true
+      common_name: metricScraperCA
+
+- type: replace
+  path: /variables/name=prom_scraper_scrape_tls?
+  value:
+    name: prom_scraper_scrape_tls
+    type: certificate
+    options:
+      ca: metric_scraper_ca
+      common_name: prom_scraper
+      extended_key_usage:
+      - client_auth
+
+- type: replace
+  path: /variables/name=prom_scraper_metrics_tls?
+  value:
+    name: prom_scraper_metrics_tls
+    type: certificate
+    options:
+      ca: metric_scraper_ca
+      common_name: prom_scraper_metrics
+      extended_key_usage:
+      - server_auth
+
+- type: replace
+  path: /variables/name=service_logs_metrics_tls?
+  value:
+    name: service_logs_metrics_tls
+    type: certificate
+    options:
+      ca: metric_scraper_ca
+      common_name: service_logs_metrics
+      extended_key_usage:
+      - server_auth

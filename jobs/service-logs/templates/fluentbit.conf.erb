@@ -10,3 +10,6 @@
     Addr  localhost:<%= p('port') %>
     Source_ID <%= p('source_id') %>
     Metrics_Port <%= p('metrics.port') %>
+    Metrics_CA /var/vcap/jobs/service-logs/config/certs/metrics_ca.crt
+    Metrics_Cert /var/vcap/jobs/service-logs/config/certs/metrics.crt
+    Metrics_Key /var/vcap/jobs/service-logs/config/certs/metrics.key
