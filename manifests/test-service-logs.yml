@@ -42,7 +42,7 @@ instance_groups:
         ca_cert: ((service_logs_metrics_tls.ca))
         cert: ((service_logs_metrics_tls.certificate))
         key: ((service_logs_metrics_tls.private_key))
-        server_name: prom_scraper_metrics
+        server_name: service_logs_metrics
   - name: loggregator_agent
     release: loggregator-agent
     consumes:
