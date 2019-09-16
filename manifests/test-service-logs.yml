@@ -56,10 +56,10 @@ instance_groups:
             key: ((loggregator_tls_agent.private_key))
           ca_cert: ((loggregator_tls_agent.ca))
       metrics:
-        ca_cert: ((loggregator_tls_agent.ca))
-        cert: ((loggregator_tls_agent.certificate))
-        key: ((loggregator_tls_agent.private_key))
-        server_name: loggregator-agent-metrics
+        ca_cert: ((loggregator_agent_metrics.ca))
+        cert: ((loggregator_agent_metrics.certificate))
+        key: ((loggregator_agent_metrics.private_key))
+        server_name: loggregator_agent_metrics
   - name: prom_scraper
     release: loggregator-agent
     properties:
@@ -95,6 +95,7 @@ variables:
     extended_key_usage:
     - client_auth
     - server_auth
+
 - name: loggregator_agent_client
   type: certificate
   options:
@@ -131,6 +132,14 @@ variables:
   options:
     ca: metric_scraper_ca
     common_name: service_logs_metrics
+    extended_key_usage:
+    - server_auth
+
+- name: loggregator_agent_metrics_tls
+  type: certificate
+  options:
+    ca: metric_scraper_ca
+    common_name: loggregator_agent_metrics
     extended_key_usage:
     - server_auth
 

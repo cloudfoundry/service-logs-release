@@ -5,4 +5,4 @@ instance_id: <%= spec.id || spec.index.to_s %>
 scheme: https
 server_name: <%= p('metrics.server_name') %>
 labels:
-  instance_group: <%= spec.job %>
+  instance_group: <%= spec.name %>
