@@ -10,7 +10,7 @@ code.cloudfoundry.org/rfc5424
 code.cloudfoundry.org/tlsconfig
 # github.com/beorn7/perks v1.0.1
 github.com/beorn7/perks/quantile
-# github.com/fluent/fluent-bit-go v0.0.0-20190614024040-c017a8579953
+# github.com/fluent/fluent-bit-go v0.0.0-20190925192703-ea13c021720c
 github.com/fluent/fluent-bit-go/output
 # github.com/golang/protobuf v1.3.2
 github.com/golang/protobuf/jsonpb
@@ -38,7 +38,7 @@ github.com/prometheus/procfs/internal/fs
 github.com/prometheus/procfs/internal/util
 # github.com/ugorji/go/codec v1.1.7
 github.com/ugorji/go/codec
-# golang.org/x/net v0.0.0-20190923162816-aa69164e4478
+# golang.org/x/net v0.0.0-20190926025831-c00fd9afed17
 golang.org/x/net/context
 golang.org/x/net/trace
 golang.org/x/net/internal/timeseries
@@ -54,9 +54,9 @@ golang.org/x/text/secure/bidirule
 golang.org/x/text/unicode/bidi
 golang.org/x/text/unicode/norm
 golang.org/x/text/transform
-# google.golang.org/genproto v0.0.0-20190916214212-f660b8655731
+# google.golang.org/genproto v0.0.0-20190925194540-b8fbc687dcfb
 google.golang.org/genproto/googleapis/rpc/status
-# google.golang.org/grpc v1.23.1
+# google.golang.org/grpc v1.24.0
 google.golang.org/grpc
 google.golang.org/grpc/credentials
 google.golang.org/grpc/balancer
