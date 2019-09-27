@@ -46,7 +46,7 @@ golang.org/x/net/http2
 golang.org/x/net/http2/hpack
 golang.org/x/net/http/httpguts
 golang.org/x/net/idna
-# golang.org/x/sys v0.0.0-20190926180325-855e68c8590b
+# golang.org/x/sys v0.0.0-20190927073244-c990c680b611
 golang.org/x/sys/windows
 golang.org/x/sys/unix
 # golang.org/x/text v0.3.2
@@ -54,7 +54,7 @@ golang.org/x/text/secure/bidirule
 golang.org/x/text/unicode/bidi
 golang.org/x/text/unicode/norm
 golang.org/x/text/transform
-# google.golang.org/genproto v0.0.0-20190925194540-b8fbc687dcfb
+# google.golang.org/genproto v0.0.0-20190926190326-7ee9db18f195
 google.golang.org/genproto/googleapis/rpc/status
 # google.golang.org/grpc v1.24.0
 google.golang.org/grpc
