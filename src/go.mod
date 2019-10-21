@@ -12,8 +12,8 @@ require (
 	github.com/onsi/gomega v1.7.0 // indirect
 	github.com/prometheus/client_golang v1.2.1 // indirect
 	github.com/ugorji/go v1.1.7 // indirect
-	golang.org/x/net v0.0.0-20191014212845-da9a3fd4c582 // indirect
-	golang.org/x/sys v0.0.0-20191020152052-9984515f0562 // indirect
+	golang.org/x/net v0.0.0-20191021144547-ec77196f6094 // indirect
+	golang.org/x/sys v0.0.0-20191020212454-3e7259c5e7c2 // indirect
 	golang.org/x/text v0.3.2 // indirect
 	google.golang.org/genproto v0.0.0-20191009194640-548a555dbc03 // indirect
 	google.golang.org/grpc v1.24.0 // indirect
