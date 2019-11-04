@@ -13,7 +13,7 @@ require (
 	github.com/prometheus/client_golang v1.2.1 // indirect
 	github.com/ugorji/go v1.1.7 // indirect
 	golang.org/x/net v0.0.0-20191101175033-0deb6923b6d9 // indirect
-	golang.org/x/sys v0.0.0-20191029155521-f43be2a4598c // indirect
+	golang.org/x/sys v0.0.0-20191104094858-e8c54fb511f6 // indirect
 	golang.org/x/text v0.3.2 // indirect
 	google.golang.org/genproto v0.0.0-20191028173616-919d9bdd9fe6 // indirect
 	google.golang.org/grpc v1.24.0 // indirect
