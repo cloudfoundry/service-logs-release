@@ -7,10 +7,10 @@ require (
 	code.cloudfoundry.org/go-loggregator v0.0.0-20190809213911-969cb33bee6a // pinned
 	github.com/fluent/fluent-bit-go v0.0.0-20190925192703-ea13c021720c
 	github.com/gogo/protobuf v1.3.1 // indirect
-	github.com/google/go-cmp v0.3.1 // indirect
 	github.com/onsi/ginkgo v1.10.3 // indirect
 	github.com/onsi/gomega v1.7.1 // indirect
 	github.com/prometheus/client_golang v1.2.1 // indirect
+	github.com/prometheus/procfs v0.0.6 // indirect
 	github.com/ugorji/go v1.1.7 // indirect
 	golang.org/x/lint v0.0.0-20190313153728-d0100b6bd8b3 // indirect
 	golang.org/x/net v0.0.0-20191109021931-daa7c04131f5 // indirect
