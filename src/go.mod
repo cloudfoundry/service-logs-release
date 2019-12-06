@@ -15,7 +15,7 @@ require (
 	github.com/prometheus/procfs v0.0.8 // indirect
 	github.com/ugorji/go v1.1.7 // indirect
 	golang.org/x/lint v0.0.0-20190313153728-d0100b6bd8b3 // indirect
-	golang.org/x/net v0.0.0-20191204025024-5ee1b9f4859a // indirect
+	golang.org/x/net v0.0.0-20191206103017-1ddd1de85cb0 // indirect
 	golang.org/x/sys v0.0.0-20191204072324-ce4227a45e2e // indirect
 	golang.org/x/text v0.3.2 // indirect
 	golang.org/x/tools v0.0.0-20190524140312-2c0ae7006135 // indirect
