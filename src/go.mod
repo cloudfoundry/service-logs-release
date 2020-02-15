@@ -8,6 +8,7 @@ require (
 	github.com/fluent/fluent-bit-go v0.0.0-20190925192703-ea13c021720c
 	github.com/gogo/protobuf v1.3.1 // indirect
 	github.com/kr/pretty v0.2.0 // indirect
+	github.com/kr/text v0.2.0 // indirect
 	github.com/onsi/ginkgo v1.12.0 // indirect
 	github.com/onsi/gomega v1.9.0 // indirect
 	github.com/prometheus/client_golang v1.4.1 // indirect
