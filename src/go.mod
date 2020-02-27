@@ -7,6 +7,7 @@ require (
 	code.cloudfoundry.org/go-loggregator v0.0.0-20190809213911-969cb33bee6a // pinned
 	github.com/fluent/fluent-bit-go v0.0.0-20190925192703-ea13c021720c
 	github.com/gogo/protobuf v1.3.1 // indirect
+	github.com/golang/protobuf v1.3.4 // indirect
 	github.com/kr/pretty v0.2.0 // indirect
 	github.com/kr/text v0.2.0 // indirect
 	github.com/onsi/ginkgo v1.12.0 // indirect
@@ -16,7 +17,7 @@ require (
 	golang.org/x/net v0.0.0-20200226121028-0de0cce0169b // indirect
 	golang.org/x/sys v0.0.0-20200223170610-d5e6a3e2c0ae // indirect
 	golang.org/x/text v0.3.2 // indirect
-	google.golang.org/genproto v0.0.0-20200225123651-fc8f55426688 // indirect
+	google.golang.org/genproto v0.0.0-20200227132054-3f1135a288c9 // indirect
 	google.golang.org/grpc v1.27.1 // indirect
 	gopkg.in/yaml.v2 v2.2.8 // indirect
 )
