@@ -5,7 +5,7 @@ go 1.12
 require (
 	code.cloudfoundry.org/go-diodes v0.0.0-20190809170250-f77fb823c7ee // indirect
 	code.cloudfoundry.org/go-loggregator v0.0.0-20190809213911-969cb33bee6a // pinned
-	github.com/fluent/fluent-bit-go v0.0.0-20190925192703-ea13c021720c
+	github.com/fluent/fluent-bit-go v0.0.0-20200304012558-215d6804159a
 	github.com/gogo/protobuf v1.3.1 // indirect
 	github.com/golang/protobuf v1.3.4 // indirect
 	github.com/kr/pretty v0.2.0 // indirect
