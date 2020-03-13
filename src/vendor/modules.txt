@@ -14,7 +14,7 @@ github.com/beorn7/perks/quantile
 github.com/cespare/xxhash/v2
 # github.com/fluent/fluent-bit-go v0.0.0-20200304012558-215d6804159a
 github.com/fluent/fluent-bit-go/output
-# github.com/golang/protobuf v1.3.4
+# github.com/golang/protobuf v1.3.5
 github.com/golang/protobuf/jsonpb
 github.com/golang/protobuf/proto
 github.com/golang/protobuf/ptypes
@@ -56,7 +56,7 @@ golang.org/x/text/secure/bidirule
 golang.org/x/text/transform
 golang.org/x/text/unicode/bidi
 golang.org/x/text/unicode/norm
-# google.golang.org/genproto v0.0.0-20200312145019-da6875a35672
+# google.golang.org/genproto v0.0.0-20200313141609-30c55424f95d
 google.golang.org/genproto/googleapis/rpc/status
 # google.golang.org/grpc v1.28.0
 google.golang.org/grpc
